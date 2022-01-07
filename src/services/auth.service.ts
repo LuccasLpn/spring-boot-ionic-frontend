@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { JwtHelper } from "angular2-jwt";
 import { Platform } from "ionic-angular";
+import { API_CONFIG } from "../config/api.config";
 import { CredenciaisDTO } from "../models/credenciais.dto";
 import { LocalUser } from "../models/local_user";
 import { StorageService } from "./storage.services";
@@ -9,7 +10,7 @@ import { StorageService } from "./storage.services";
 
 @Injectable()
 export class AuthService{
-    basepath = "/login"
+    basepath = ""
     jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(public http: HttpClient,
@@ -23,13 +24,25 @@ export class AuthService{
 
     authenticate(creds : CredenciaisDTO){
       return this.http.post(
-          this.basepath
+          this.basepath + '/login'
             ,creds,
             {
             observe : 'response',
             responseType: 'text'
         });
     }
+
+    refreshToken(){
+        
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/auth/refresh_token`
+              ,{},
+              {
+              observe : 'response',
+              responseType: 'text'
+          });
+      }
+
     successfulllogin(authorizationValue : string){
         let tok = authorizationValue.substring(7);
         let user : LocalUser = {
