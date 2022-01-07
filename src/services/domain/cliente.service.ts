@@ -9,7 +9,7 @@ import { StorageService } from "../storage.services";
 @Injectable()
 export class ClienteService{
 
-    basepath = "/clientes/email?value="
+    basepath = ""
 
     constructor(public http: HttpClient,
                 public storage: StorageService,
@@ -32,6 +32,15 @@ export class ClienteService{
         let url = `${API_CONFIG.bucketBaseUrl}/cp${id}.jpg`
         return this.http.get(url, {responseType : 'blob'});
         
+    }
+    
+    insert(obj: ClienteDTO){
+        return this.http.post(this.basepath + '/clientes',
+        obj,{
+            observe: 'response',
+            responseType: 'text'
+        }
+        );
     }
 
 
