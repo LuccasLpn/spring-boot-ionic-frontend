@@ -5,6 +5,10 @@
   </ion-navbar>
 </ion-header>
 
+  <ion-fab top right edge>
+    <button navPush="CartPage" ion-fab mini><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
+
 <ion-content padding>
 <ion-card>
   <img [src]="item?.imageUrl || 'assets/imgs/prod.jpg'"/>
