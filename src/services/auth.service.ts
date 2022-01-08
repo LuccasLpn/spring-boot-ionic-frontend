@@ -5,6 +5,7 @@ import { Platform } from "ionic-angular";
 import { API_CONFIG } from "../config/api.config";
 import { CredenciaisDTO } from "../models/credenciais.dto";
 import { LocalUser } from "../models/local_user";
+import { CartService } from "./domain/cart.service";
 import { StorageService } from "./storage.services";
 
 
@@ -15,7 +16,8 @@ export class AuthService{
 
     constructor(public http: HttpClient,
                 private _platform: Platform,
-                public storage : StorageService){
+                public storage : StorageService,
+                public cartService: CartService){
 
                  if(this._platform.is("cordova")){
                      this.basepath = "http://localhost:8080";
@@ -50,6 +52,7 @@ export class AuthService{
             email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
+        this.cartService.createOrClearCart();
     }
     logout(){
         this.storage.setLocalUser(null);
