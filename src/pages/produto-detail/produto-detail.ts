@@ -17,7 +17,8 @@ export class ProdutoDetailPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public produtoService: ProdutoService,
-              public cartService: CartService) {
+              public cartService: CartService,
+              ) {
   }
 
   ionViewDidLoad() {

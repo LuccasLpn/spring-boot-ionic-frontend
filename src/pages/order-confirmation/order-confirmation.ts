@@ -79,7 +79,5 @@ export class OrderConfirmationPage {
   home(){
     this.navCtrl.setRoot('CategoriasPage');
   }
-
-
-
+  
 }
