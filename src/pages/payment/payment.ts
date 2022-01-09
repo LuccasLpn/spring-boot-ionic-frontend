@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { PeditoDTO } from '../../models/pedido.dto';
+import { PedidoDTO } from '../../models/pedido.dto';
 
 @IonicPage()
 @Component({
@@ -10,7 +10,7 @@ import { PeditoDTO } from '../../models/pedido.dto';
 })
 export class PaymentPage {
 
-  pedido: PeditoDTO;
+  pedido: PedidoDTO;
   parcelas: number [] = [1,2,3,4,5,6,7,8,9,10];
   formGroup: FormGroup;
 
