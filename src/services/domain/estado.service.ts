@@ -12,7 +12,7 @@ export class EstadoService{
  constructor(public Http: HttpClient,
             public _platform: Platform){
 
-                if(this._platform.is("cordova")){
+                if(this._platform.is("browser")){
                     this.basepath = "http://localhost:8080";
                 }  
 
