@@ -12,9 +12,11 @@
   </ion-fab>
 
 <ion-content padding>
+
     <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+
   <ion-list>
     <button ion-item *ngFor="let item of items" (click) = "showDetail(item.id)">
       <ion-thumbnail item-start>
@@ -24,4 +26,9 @@
       <p>{{item.preco | currency}} </p>
     </button>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  
 </ion-content>
