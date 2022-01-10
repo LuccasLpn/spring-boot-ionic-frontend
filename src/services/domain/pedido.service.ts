@@ -7,16 +7,10 @@ import { PedidoDTO } from "../../models/pedido.dto";
 @Injectable()
 export class PedidoService{
 
-    basepath = ""
-
     constructor(public Http: HttpClient,
         public _platform: Platform){
 
-            if(this._platform.is("cordova")){
-                this.basepath = "http://localhost:8080";
-            }  
-    
-   
+
 
 }
     insert(obj: PedidoDTO){

@@ -11,7 +11,6 @@ import { StorageService } from "./storage.services";
 
 @Injectable()
 export class AuthService{
-    basepath = ""
     jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(public http: HttpClient,
@@ -19,14 +18,12 @@ export class AuthService{
                 public storage : StorageService,
                 public cartService: CartService){
 
-                 if(this._platform.is("cordova")){
-                     this.basepath = "http://localhost:8080";
-                 }   
+      
     }
 
     authenticate(creds : CredenciaisDTO){
       return this.http.post(
-          this.basepath + '/login'
+          `${API_CONFIG.baseUrl}/login`
             ,creds,
             {
             observe : 'response',
